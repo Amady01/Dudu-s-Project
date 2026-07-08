@@ -1,4 +1,4 @@
-# GET409-NiayesBiz
+# GET409-AutoForge
 
 > **Cours :** GET 409 · Swiss UMEF University — Campus de Dakar · 2025-2026
 > **Séance :** S1 — Lancement & Design Thinking
