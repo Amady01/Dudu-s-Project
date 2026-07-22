@@ -22,6 +22,13 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <>
+      {/* Banner */}
+      <section className="bg-brand py-2.5 text-center text-sm font-medium text-brand-foreground shadow-sm">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <span aria-hidden>🔧</span> Plus de 500 pièces vérifiées à Dakar
+        </div>
+      </section>
+
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-b from-brand-soft to-background">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-28">
