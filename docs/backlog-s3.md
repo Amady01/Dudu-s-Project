@@ -2,7 +2,7 @@
 
 ## HMW Définitif
 
-> **"Comment pourrions-nous aider les propriétaires de véhicules à comparer en temps réel la disponibilité et le prix des pièces détachées chez les revendeurs locaux, afin de réduire le temps d'immobilisation de leur voiture et d'éviter les surcoûts ?"**
+**"Comment pourrions-nous aider les propriétaires de véhicules à comparer en temps réel la disponibilité et le prix des pièces détachées chez les revendeurs locaux, afin de réduire le temps d'immobilisation de leur voiture et d'éviter les surcoûts ?"**
 
 ---
 
