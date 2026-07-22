@@ -46,12 +46,18 @@ function formatFCFA(n: number) {
 
 function CataloguePage() {
   const [filter, setFilter] = useState<Filter>("Tous");
+  const [search, setSearch] = useState("");
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<string>("");
   const [error, setError] = useState<string>("");
 
-  const filtered = filter === "Tous" ? PARTS : PARTS.filter((p) => p.brand === filter);
+  const searchTerm = search.trim().toLowerCase();
+  const filtered = PARTS.filter((p) => {
+    const matchesBrand = filter === "Tous" || p.brand === filter;
+    const matchesSearch = searchTerm === "" || p.name.toLowerCase().includes(searchTerm);
+    return matchesBrand && matchesSearch;
+  });
 
   async function askExpert(e: React.FormEvent) {
     e.preventDefault();
@@ -168,6 +174,29 @@ function CataloguePage() {
 
 
 
+      {/* Search */}
+      <div className="mb-6">
+        <label htmlFor="catalogue-search" className="sr-only">
+          Rechercher une pièce
+        </label>
+        <div className="relative">
+          <span
+            className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground"
+            aria-hidden
+          >
+            🔍
+          </span>
+          <input
+            id="catalogue-search"
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Rechercher une pièce (ex. plaquettes, alternateur...)"
+            className="w-full rounded-lg border border-border bg-background py-3 pl-11 pr-4 text-sm text-foreground outline-none focus:border-brand focus:ring-2 focus:ring-brand/30"
+          />
+        </div>
+      </div>
+
       {/* Filters */}
       <div className="mb-8 flex flex-wrap gap-2">
         {FILTERS.map((f) => {
@@ -194,7 +223,7 @@ function CataloguePage() {
         {filtered.map((p) => (
           <article
             key={p.name}
-            className="flex flex-col rounded-2xl border border-border bg-card p-5 shadow-md transition-shadow hover:shadow-lg"
+            className="flex flex-col rounded-2xl border border-border bg-card p-5 shadow-md transition-all duration-200 hover:scale-[1.02] hover:shadow-lg"
           >
             <div className="flex items-start justify-between gap-3">
               <h2 className="text-base font-semibold leading-snug text-foreground">
@@ -236,7 +265,7 @@ function CataloguePage() {
 
       {filtered.length === 0 && (
         <p className="mt-10 text-center text-sm text-muted-foreground">
-          Aucune pièce pour ce filtre pour le moment.
+          Aucune pièce ne correspond à votre recherche.
         </p>
       )}
     </section>
