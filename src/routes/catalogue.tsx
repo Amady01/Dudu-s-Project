@@ -174,6 +174,29 @@ function CataloguePage() {
 
 
 
+      {/* Search */}
+      <div className="mb-6">
+        <label htmlFor="catalogue-search" className="sr-only">
+          Rechercher une pièce
+        </label>
+        <div className="relative">
+          <span
+            className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground"
+            aria-hidden
+          >
+            🔍
+          </span>
+          <input
+            id="catalogue-search"
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Rechercher une pièce (ex. plaquettes, alternateur...)"
+            className="w-full rounded-lg border border-border bg-background py-3 pl-11 pr-4 text-sm text-foreground outline-none focus:border-brand focus:ring-2 focus:ring-brand/30"
+          />
+        </div>
+      </div>
+
       {/* Filters */}
       <div className="mb-8 flex flex-wrap gap-2">
         {FILTERS.map((f) => {
