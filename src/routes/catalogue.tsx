@@ -46,8 +46,57 @@ function formatFCFA(n: number) {
 
 function CataloguePage() {
   const [filter, setFilter] = useState<Filter>("Tous");
+  const [query, setQuery] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
   const filtered = filter === "Tous" ? PARTS : PARTS.filter((p) => p.brand === filter);
+
+  async function askExpert(e: React.FormEvent) {
+    e.preventDefault();
+    if (!query.trim() || loading) return;
+    setLoading(true);
+    setError("");
+    setResult("");
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+    try {
+      const res = await fetch("https://api.dify.ai/v1/workflows/run", {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer app-JMsq9t0m85LKUhbSefrDMnsd",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          inputs: { query: query.trim() },
+          response_mode: "blocking",
+          user: "AutoForge-" + Date.now(),
+        }),
+        signal: controller.signal,
+      });
+      if (!res.ok) throw new Error("network");
+      const data = await res.json();
+      const outputs = data?.data?.outputs;
+      const text =
+        typeof outputs === "string"
+          ? outputs
+          : outputs?.text ?? outputs?.answer ?? outputs?.result ?? JSON.stringify(outputs, null, 2);
+      setResult(text || "Aucune réponse reçue.");
+    } catch (err: unknown) {
+      const name = (err as { name?: string } | null)?.name;
+      if (name === "AbortError") {
+        setError("La réponse prend trop de temps — réessayez");
+      } else {
+        setError("Service temporairement indisponible");
+      }
+    } finally {
+      clearTimeout(timeoutId);
+      setLoading(false);
+    }
+  }
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
@@ -60,6 +109,64 @@ function CataloguePage() {
           partenaires à Dakar.
         </p>
       </header>
+
+      {/* AI Expert */}
+      <section className="mb-10 rounded-2xl border border-border bg-card p-5 shadow-sm sm:p-6">
+        <h2 className="text-lg font-bold text-foreground sm:text-xl">
+          Consultez l'expert IA AutoForge
+        </h2>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Posez votre question sur un prix, une disponibilité ou un fournisseur à Dakar.
+        </p>
+        <form onSubmit={askExpert} className="mt-4 flex flex-col gap-3 sm:flex-row">
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Prix d'un alternateur Tucson 2015 à Colobane ?"
+            className="flex-1 rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none focus:border-brand focus:ring-2 focus:ring-brand/30"
+            disabled={loading}
+          />
+          <button
+            type="submit"
+            disabled={loading || !query.trim()}
+            style={{ backgroundColor: "#1E3A8A" }}
+            className="inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {loading ? "Analyse en cours…" : "Consulter l'expert IA 🚗"}
+          </button>
+        </form>
+
+        {(loading || result || error) && (
+          <div
+            className="mt-4 rounded-lg p-4 text-sm"
+            style={{ backgroundColor: "#F3F4F6" }}
+            aria-live="polite"
+          >
+            {loading && (
+              <div className="flex items-center gap-3 text-foreground">
+                <span
+                  className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-brand border-t-transparent"
+                  aria-hidden
+                />
+                Analyse des stocks et prix à Dakar en cours...
+              </div>
+            )}
+            {!loading && error && (
+              <p className="font-medium" style={{ color: "#DC2626" }}>
+                {error}
+              </p>
+            )}
+            {!loading && !error && result && (
+              <pre className="whitespace-pre-wrap break-words font-sans text-foreground">
+                {result}
+              </pre>
+            )}
+          </div>
+        )}
+      </section>
+
+
 
       {/* Filters */}
       <div className="mb-8 flex flex-wrap gap-2">
