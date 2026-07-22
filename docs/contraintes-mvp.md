@@ -1,6 +1,6 @@
 ---
 contraintes_mvp:
-  projet: "AutoFix-Tech"
+  projet: "AutoForge"
   persona:
     nom: "Modou Diop"
     age: 38
