@@ -223,7 +223,7 @@ function CataloguePage() {
         {filtered.map((p) => (
           <article
             key={p.name}
-            className="flex flex-col rounded-2xl border border-border bg-card p-5 shadow-md transition-shadow hover:shadow-lg"
+            className="flex flex-col rounded-2xl border border-border bg-card p-5 shadow-md transition-all duration-200 hover:scale-[1.02] hover:shadow-lg"
           >
             <div className="flex items-start justify-between gap-3">
               <h2 className="text-base font-semibold leading-snug text-foreground">
@@ -265,7 +265,7 @@ function CataloguePage() {
 
       {filtered.length === 0 && (
         <p className="mt-10 text-center text-sm text-muted-foreground">
-          Aucune pièce pour ce filtre pour le moment.
+          Aucune pièce ne correspond à votre recherche.
         </p>
       )}
     </section>
