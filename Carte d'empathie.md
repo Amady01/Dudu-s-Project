@@ -1,6 +1,5 @@
 ---
-
-# Carte d'empathie — Modou Diop
+## Carte d'empathie — Modou Diop
 
 **Équipe :** AutoFix-Tech
 
