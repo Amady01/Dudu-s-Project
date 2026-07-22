@@ -194,7 +194,7 @@ function CataloguePage() {
         {filtered.map((p) => (
           <article
             key={p.name}
-            className="flex flex-col rounded-2xl border border-border bg-card p-5 shadow-sm transition-shadow hover:shadow-md"
+            className="flex flex-col rounded-2xl border border-border bg-card p-5 shadow-md transition-shadow hover:shadow-lg"
           >
             <div className="flex items-start justify-between gap-3">
               <h2 className="text-base font-semibold leading-snug text-foreground">
