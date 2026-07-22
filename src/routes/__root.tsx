@@ -175,6 +175,17 @@ function Footer() {
             <li>Route de Diamniadio, Zone Industrielle, Dakar</li>
             <li>contact@autoforge.sn</li>
             <li>+221 33 800 00 00</li>
+            <li>
+              <a
+                href="https://wa.me/221778000000"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 underline-offset-2 hover:text-background hover:underline"
+              >
+                <span aria-hidden>💬</span>
+                WhatsApp
+              </a>
+            </li>
           </ul>
         </div>
         <div>

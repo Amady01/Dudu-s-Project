@@ -36,6 +36,24 @@ function ContactPage() {
   const inputCls =
     "mt-1 block w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30";
 
+  const trustItems = [
+    {
+      icon: "✅",
+      title: "Pièces vérifiées avant mise en ligne",
+      desc: "Chaque référence est contrôlée qualité par nos fournisseurs partenaires.",
+    },
+    {
+      icon: "🚚",
+      title: "Livraison rapide à Diamniadio",
+      desc: "Retrait en zone industrielle ou livraison express sur Dakar et ses environs.",
+    },
+    {
+      icon: "💬",
+      title: "Support WhatsApp 7j/7",
+      desc: "Une question ? Nos experts vous répondent directement sur WhatsApp, tous les jours.",
+    },
+  ];
+
   return (
     <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       <header className="mb-8 max-w-2xl">
@@ -47,6 +65,23 @@ function ContactPage() {
           Écrivez-nous — notre équipe basée à Dakar vous répond sous 24h ouvrées.
         </p>
       </header>
+
+      {/* Trust section */}
+      <div className="mb-10">
+        <h2 className="mb-4 text-lg font-semibold text-foreground">Pourquoi nous faire confiance</h2>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {trustItems.map((item) => (
+            <div
+              key={item.title}
+              className="rounded-xl border border-border bg-card p-5 shadow-sm transition-all hover:shadow-md hover:scale-[1.02]"
+            >
+              <div className="text-2xl" aria-hidden>{item.icon}</div>
+              <h3 className="mt-3 text-sm font-semibold text-foreground">{item.title}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
 
       <div className="grid gap-8 md:grid-cols-5">
         {/* Form */}
