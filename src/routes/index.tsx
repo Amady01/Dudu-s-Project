@@ -9,10 +9,10 @@ export const Route = createFileRoute("/")({
         content:
           "Comparez en temps réel prix, disponibilité et localisation des pièces détachées auto à Dakar. Évitez les déplacements inutiles.",
       },
-      { property: "og:title", content: "AutoForge — Pièces auto à Dakar en temps réel" },
+      { property: "og:title", content: "AutoForge — Trouvez la bonne pièce auto à Dakar" },
       {
         property: "og:description",
-        content: "Disponibilité, prix et localisation centralisés pour les pièces auto à Dakar.",
+        content: "Comparez en temps réel prix, disponibilité et localisation des pièces détachées auto à Dakar. Évitez les déplacements inutiles.",
       },
     ],
   }),

@@ -77,20 +77,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "AutoForge — Pièces auto à Dakar en temps réel" },
+      { title: "AutoForge — Trouvez la bonne pièce auto à Dakar" },
       {
         name: "description",
         content:
-          "AutoForge centralise en temps réel la disponibilité, les prix et la localisation des pièces détachées automobiles à Dakar.",
+          "Comparez en temps réel prix, disponibilité et localisation des pièces détachées auto à Dakar. Évitez les déplacements inutiles.",
       },
       { name: "author", content: "AutoForge" },
-      { property: "og:title", content: "AutoForge — Pièces auto à Dakar" },
+      { property: "og:title", content: "AutoForge — Trouvez la bonne pièce auto à Dakar" },
       {
         property: "og:description",
-        content: "Trouvez la bonne pièce détachée à Dakar sans détour ni prix gonflés.",
+        content: "Comparez en temps réel prix, disponibilité et localisation des pièces détachées auto à Dakar. Évitez les déplacements inutiles.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "AutoForge — Trouvez la bonne pièce auto à Dakar" },
+      { name: "twitter:description", content: "Comparez en temps réel prix, disponibilité et localisation des pièces détachées auto à Dakar. Évitez les déplacements inutiles." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f556b1e7-1252-458b-b62a-22f9328a93cf/id-preview-ffa764ea--4fdf57e8-7166-49b0-8c37-09d86bdaae3e.lovable.app-1784748194966.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f556b1e7-1252-458b-b62a-22f9328a93cf/id-preview-ffa764ea--4fdf57e8-7166-49b0-8c37-09d86bdaae3e.lovable.app-1784748194966.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
