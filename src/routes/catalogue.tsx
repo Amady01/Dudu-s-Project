@@ -46,8 +46,57 @@ function formatFCFA(n: number) {
 
 function CataloguePage() {
   const [filter, setFilter] = useState<Filter>("Tous");
+  const [query, setQuery] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
   const filtered = filter === "Tous" ? PARTS : PARTS.filter((p) => p.brand === filter);
+
+  async function askExpert(e: React.FormEvent) {
+    e.preventDefault();
+    if (!query.trim() || loading) return;
+    setLoading(true);
+    setError("");
+    setResult("");
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+    try {
+      const res = await fetch("https://api.dify.ai/v1/workflows/run", {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer app-JMsq9t0m85LKUhbSefrDMnsd",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          inputs: { query: query.trim() },
+          response_mode: "blocking",
+          user: "AutoForge-" + Date.now(),
+        }),
+        signal: controller.signal,
+      });
+      if (!res.ok) throw new Error("network");
+      const data = await res.json();
+      const outputs = data?.data?.outputs;
+      const text =
+        typeof outputs === "string"
+          ? outputs
+          : outputs?.text ?? outputs?.answer ?? outputs?.result ?? JSON.stringify(outputs, null, 2);
+      setResult(text || "Aucune réponse reçue.");
+    } catch (err: unknown) {
+      const name = (err as { name?: string } | null)?.name;
+      if (name === "AbortError") {
+        setError("La réponse prend trop de temps — réessayez");
+      } else {
+        setError("Service temporairement indisponible");
+      }
+    } finally {
+      clearTimeout(timeoutId);
+      setLoading(false);
+    }
+  }
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
