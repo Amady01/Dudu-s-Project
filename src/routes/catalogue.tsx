@@ -46,12 +46,18 @@ function formatFCFA(n: number) {
 
 function CataloguePage() {
   const [filter, setFilter] = useState<Filter>("Tous");
+  const [search, setSearch] = useState("");
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<string>("");
   const [error, setError] = useState<string>("");
 
-  const filtered = filter === "Tous" ? PARTS : PARTS.filter((p) => p.brand === filter);
+  const searchTerm = search.trim().toLowerCase();
+  const filtered = PARTS.filter((p) => {
+    const matchesBrand = filter === "Tous" || p.brand === filter;
+    const matchesSearch = searchTerm === "" || p.name.toLowerCase().includes(searchTerm);
+    return matchesBrand && matchesSearch;
+  });
 
   async function askExpert(e: React.FormEvent) {
     e.preventDefault();
