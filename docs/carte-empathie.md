@@ -1,8 +1,8 @@
 # Carte d'empathie — Modou Diop
 
-**Équipe :** AutoFix-Tech  
+**Équipe :** Dudu-s-Project  
 **Séance :** S1 — Design Thinking · Empathize & Define  
-**Projet :** AutoFix — Transparence et géolocalisation des pièces détachées automobiles  
+**Projet :** AutoForge — Transparence et géolocalisation des pièces détachées automobiles  
 **Date :** 22/07/2026  
 
 ---
