@@ -30,7 +30,7 @@ type Part = {
 
 const PARTS: Part[] = [
   { name: "Plaquettes de frein Toyota Corolla", zone: "Marché Petersen, Dakar", price: 15000, available: true, brand: "Toyota" },
-  { name: "Alternateur Renault Logan", zone: "Thiaroye-sur-Mer", price: 45000, available: true, brand: "Renault" },
+  { name: "Alternateur Renault Logan", zone: "Thiaroye-sur-Mer", price: 48000, available: false, brand: "Renault" },
   { name: "Pare-choc avant Hyundai i10", zone: "Colobane, Dakar", price: 60000, available: false, brand: "Hyundai" },
   { name: "Filtre à huile Peugeot 206", zone: "Marché HLM, Dakar", price: 5000, available: true, brand: "Peugeot" },
   { name: "Batterie Kia Picanto 12V", zone: "Diamniadio", price: 55000, available: true, brand: "Kia" },
