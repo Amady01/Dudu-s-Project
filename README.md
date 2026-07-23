@@ -11,6 +11,8 @@
 | Amadou SALL | Dev UI (No-Code) | @Amady01 |
 | Ramatoulaye SY | Responsable Impact | @ |
 | Alassane DIAW | Pentesteur | @lazou4596 |
+| YEMBI KOUMBA Jordane Sandrick| feedback manager| @jordane-sandrick |
+
 
 ---
 
