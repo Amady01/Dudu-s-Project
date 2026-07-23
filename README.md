@@ -9,7 +9,7 @@
 | Djiby DIALLO | Chef de Produit (PM) | @Djiby20 |
 | Doudou SARR | Master Prompt Engineer | @du-dev |
 | Amadou SALL | Dev UI (No-Code) | @Amady01 |
-| Ramatoulaye SY | Responsable Impact | @ |
+| Ramatoulaye SY | Responsable Impact | @Ramatoulaye |
 | Alassane DIAW | Pentesteur | @lazou4596 |
 
 ---
