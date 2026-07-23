@@ -25,19 +25,55 @@ type Part = {
   zone: string;
   price: number;
   available: boolean;
-  brand: "Toyota" | "Renault" | "Hyundai" | "Peugeot" | "Kia";
+  brand: "Toyota" | "Peugeot" | "Hyundai" | "Nissan" | "Mitsubishi" | "Universal";
 };
 
 const PARTS: Part[] = [
-  { name: "Plaquettes de frein Toyota Corolla", zone: "Marché Petersen, Dakar", price: 15000, available: true, brand: "Toyota" },
-  { name: "Alternateur Renault Logan", zone: "Thiaroye-sur-Mer", price: 48000, available: false, brand: "Renault" },
-  { name: "Pare-choc avant Hyundai i10", zone: "Colobane, Dakar", price: 60000, available: false, brand: "Hyundai" },
-  { name: "Filtre à huile Peugeot 206", zone: "Marché HLM, Dakar", price: 5000, available: true, brand: "Peugeot" },
-  { name: "Batterie Kia Picanto 12V", zone: "Diamniadio", price: 55000, available: true, brand: "Kia" },
-  { name: "Rétroviseur droit Toyota Hilux", zone: "Marché Petersen, Dakar", price: 20000, available: true, brand: "Toyota" },
+  {
+    name: "Jeu d'amortisseurs avant (Toyota Corolla 2010)",
+    zone: "Colobane (Ets Fallou & Frères)",
+    price: 45000,
+    available: true,
+    brand: "Toyota",
+  },
+  {
+    name: "Kit de plaquettes de frein avant (Peugeot 307)",
+    zone: "Castors (AutoPieces Castors)",
+    price: 18500,
+    available: true,
+    brand: "Peugeot",
+  },
+  {
+    name: "Alternateur 12V 90A (Hyundai Tucson 2015)",
+    zone: "Thiaroye Gare (Garage & Pièces Mbacké)",
+    price: 65000,
+    available: false,
+    brand: "Hyundai",
+  },
+  {
+    name: "Batterie 12V 70Ah 640A (Universal / Toyota / Nissan)",
+    zone: "Grand Yoff (Dakar Batterie Plus)",
+    price: 52000,
+    available: true,
+    brand: "Universal",
+  },
+  {
+    name: "Rétroviseur extérieur droit électrique (Nissan Qashqai)",
+    zone: "Colobane (Boutique Cheikh Ndiaye Pièces)",
+    price: 35000,
+    available: true,
+    brand: "Nissan",
+  },
+  {
+    name: "Kit d'embrayage complet (Mitsubishi L200 Pick-up)",
+    zone: "Pikine Icotaf (Sénégal Auto Négoce)",
+    price: 85000,
+    available: true,
+    brand: "Mitsubishi",
+  },
 ];
 
-const FILTERS = ["Tous", "Toyota", "Renault", "Hyundai"] as const;
+const FILTERS = ["Tous", "Toyota", "Peugeot", "Hyundai", "Nissan", "Mitsubishi"] as const;
 type Filter = (typeof FILTERS)[number];
 
 function formatFCFA(n: number) {
