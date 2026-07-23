@@ -23,6 +23,7 @@
 | Amadou SALL | Dev UI (No-Code) | @Amady01 |
 | Ramatoulaye SY | Responsable Impact | @|
 | Alassane DIAW | Pentesteur | @lazou4596|
+| Jordan Sandrick| Testeur | @Jordan-Sandrick|
 
 ---
 
